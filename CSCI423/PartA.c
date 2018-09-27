@@ -1,12 +1,7 @@
 #include <stdio.h>
-
-// include the header file that allows us to use dynamic memory management
 #include <stdlib.h>
-
-// predefine the maximum length of a word (i.e., Word_MAX_Length) using preprocessor
-// command "#define" 
 #define word_MAX_Length 255
-
+//This is a test
 // define the structure WordFreq, which has a string variable word, an integer variable frequency
 struct WordFreq
 {
