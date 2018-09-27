@@ -53,16 +53,16 @@ void main(int argc, char * argv[])
 		return;
 	}
 
-	printf("file content in %s:\n", argv[1]);
+	printf("file content in %s: \n", argv[1]);
 
 	// read a line of word and frequency in the file into member variables of line and check if
 	// it reaches the end of the file (EOF)
 	while ((fscanf(f, "%d", &line->frequency)) != EOF)
 	{
 		// print the values of member variables word and frequency in variable line
-		printf("%d\n", line->frequency);
+		printf("%d ", line->frequency);
 	}
-
+	printf ("\n");
 	// remember to free the memory space you've dynamically allocated to variable line
 	free(line);
 
