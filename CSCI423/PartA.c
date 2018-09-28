@@ -1,14 +1,7 @@
 #include <stdio.h>
-
-// include the header file that allows us to use dynamic memory management
 #include <stdlib.h>
-
-// predefine the maximum length of a word (i.e., Word_MAX_Length) using preprocessor
-// command "#define" 
 #define Word_MAX_Length 255				
 
-// define the structure WordFreq, which has a string variable word, an integer variable frequency
-// and a struct WordFreq pointer variable next that will be used for linked list
 struct WordFreq
 {
 
@@ -43,9 +36,6 @@ void main(int argc, char * argv[])
 		printf("Please run as %s [filename][filename]\n", argv[2]);
 		return;
 	}
-
-
-	// define a FILE pointer variable f	
 	FILE *f;
 
 	// try to open file with the file name given in command line argument and assign the

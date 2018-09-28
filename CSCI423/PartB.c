@@ -1,14 +1,7 @@
 #include <stdio.h>
-
-// include the header file that allows us to use dynamic memory management
 #include <stdlib.h>
-
-// predefine the maximum length of a word (i.e., Word_MAX_Length) using preprocessor
-// command "#define" 
 #define Word_MAX_Length 255				
 
-// define the structure WordFreq, which has a string variable word, an integer variable frequency
-// and a struct WordFreq pointer variable next that will be used for linked list
 struct WordFreq
 {
 
@@ -98,14 +91,10 @@ void main(int argc, char * argv[])
 			return;
 		}
 	}
-
-	// remember to free the memory space you've dynamically allocated to variable line
 	free(line);
 	
 	printf("Numbers outputed:\n");
 
-	// traverse the linked list, print out each element and free its space
-	// we stop until the value of head is NULL
 	while (head!=NULL)
 	{
 		// detach the first element in the linked list and put it into variable line
@@ -131,44 +120,44 @@ void main(int argc, char * argv[])
 // remember we need to implement function insert
 void insert(struct WordFreq * element){
 
-		if(head==NULL) {
-    		element->next = head;
-			head= element;
-			return;
+	if(head==NULL) {
+    	element->next = head;
+		head= element;
+		return;
+	}
+		struct WordFreq * i=head;
+		struct WordFreq * j=i->next;
+	if(i != NULL && j ==NULL) {
+		if(element->frequency < i->frequency) {
+	   		element->next =i;
+			head=element;
 		}
-			struct WordFreq * i=head;
-			struct WordFreq * j=i->next;
-				if(i != NULL && j ==NULL) {
-					if(element->frequency < i->frequency) {
-			    		element->next =i;
-						head=element;
-					}
-					else{
-				    	element->next = NULL;
-					    i->next=element;
-					}
-			}
-				for(i; i->next !=NULL; i=i->next) {
-			    	if(j!=NULL) {
-				        j=i->next;
-						    if(element->frequency < i->frequency) {
-								element->next=i;
-							    head=element;
-								return;
+		else{
+	    	element->next = NULL;
+		    i->next=element;
+		}
+	}
+		for(i; i->next !=NULL; i=i->next) {
+	    	if(j!=NULL) {
+		        j=i->next;
+		    if(element->frequency < i->frequency) {
+				element->next=i;
+			    head=element;
+				return;
 						
-                        	}
-						if(element->frequency <= j->frequency && element->frequency >= i->frequency) {
-						    element->next = j;
-							i->next=element;
-							return;
-							}
-							
-                        else if(j->next==NULL) {
-						j->next = element;
-						element->next=NULL;
-						return;
-					}
+            	}
+			if(element->frequency <= j->frequency && element->frequency >= i->frequency) {
+			    element->next = j;
+				i->next=element;
+				return;
 			}
+							
+            else if(j->next==NULL) {
+				j->next = element;
+				element->next=NULL;
+				return;
+			}
+		}
 	}
 }
 
