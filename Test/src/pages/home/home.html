@@ -1,0 +1,38 @@
+<ion-header>
+</ion-header>
+
+<ion-content class="bg" padding>
+  <ion-slides pager>
+    <ion-slide class="welcome">
+        <h1>Welcome</h1>
+        <p>Welcome to the Dungeons & Dragons companian app. In this app you will be able to fine different
+          information about D&D and even use this to roll dice, create a character, and take Notes. Take full
+          advantage. Below just click below to acces the dice roll and swipe over to the next slides to access other
+          types of information.
+        </p>
+        <button ion-button icon-start (click)="showAlert()" color="mine">
+            <ion-icon name="cube"></ion-icon>
+            Take a Roll!!!
+          </button>
+    </ion-slide>
+    <ion-slide class="flash">
+      <h1>Flash Cards</h1>
+    </ion-slide>
+    <ion-slide class="char">
+      <h1>Characters</h1>
+      <button ion-button icon-start>
+          <ion-icon name="add"></ion-icon>
+          Add a Character
+        </button>
+    </ion-slide>
+    <ion-slide class="notes">
+        <h1>Notes</h1>
+        <button ion-button icon-start>
+            <ion-icon name="add"></ion-icon>
+            Add Notes
+          </button>
+    </ion-slide>
+  </ion-slides>
+  
+  
+</ion-content>
