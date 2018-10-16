@@ -1,50 +1,50 @@
-//Doron Reinsager
-//CSci 423
-
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-int main()
+int main(int argc, char * argv[])
 {
-	int k=0;
+
+	if(argc != 2){
+        
+        fprintf(stderr , "Usage: ./a.out <starting value>\n");
+        
+        return -1;
+    }
+    int num = atoi(argv[1]);
+        if(num <= 0 ){
+            fprintf(stderr, "<starting value> should be a positive integer\n");
+            return -1;
+        }
 	
 	pid_t pid;
-
-		do
-		{
-			printf("Please enter a number greater than 0 to run the Collatz Conjecture.\n"); 
-  			scanf("%d", &k);	
-		}while (k <= 0);
-
-		pid = fork();
+        
+        pid = fork();
 
 		if (pid == 0)
 		{
-			printf("Child is working...\n");
-			printf("%d\n",k);
-			while (k!=1)
+			
+			printf("%d, ",num);
+			while (num != 1)
 			{
-				if (k%2 == 0)
+				if (num %2 == 0)
 				{
-					k = k/2;
+					num = num / 2;
 				}
-				else if (k%2 == 1)
+				else if (num % 2 == 1)
 				{
-					k = 3 * (k) + 1;
+					num = 3 * (num) + 1;
 				}	
 			
-				printf("%d\n",k);
+				printf("%d, ",num);
 			}
 		
-			printf("Child process is done.\n");
+			printf("\n");
 		}
 		else
 		{
-			printf("Parents is waiting on child process...\n");
 			wait();
-			printf("Parent process is done.\n");
 		}
 	return 0; 
 }
-
