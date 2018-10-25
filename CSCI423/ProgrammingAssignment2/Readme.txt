@@ -1,0 +1,1 @@
+This is a C program that when given a number it performs the Collatz conjecture type formulas. To compile run gcc Program2.c, then ./a.out <integer value>. for example './a.out 3' gives you 3, 10, 5, 16, 8, 4, 2, 1  
