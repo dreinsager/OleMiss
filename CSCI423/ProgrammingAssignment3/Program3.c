@@ -13,7 +13,7 @@ int max;
 
 typedef struct datastruct
 {
-    int size;
+    int range;
     int * values;
 }datastruct;
 
@@ -33,9 +33,6 @@ int main(int argc, char *argv[])
     }
 
     pthread_t thread1, thread2, thread3;
-    const char *message1 = "This is Thread 1";
-    const char *message2 = "This is Thread 2";
-    const char *message3 = "This is Thread 3";
     int  Thread1, Thread2, Thread3;
 
     datastruct ds = {argc - 1, copy};
@@ -82,7 +79,7 @@ void *avg_func(void *ptr)
     datastruct * copy;
     copy = (datastruct *) ptr;
 
-    int sz = copy->size;
+    int sz = copy->range;
     int i;
 
     for(i = 0; i < sz; i++)
@@ -97,7 +94,7 @@ void *min_func(void *ptr)
     datastruct * copy;
     copy = (datastruct *) ptr;
 
-    int sz = copy->size;
+    int sz = copy->range;
     int i;
 
     min = (copy->values[0]);
@@ -115,7 +112,7 @@ void *max_func(void *ptr)
     datastruct * copy;
     copy = (datastruct *) ptr;
 
-    int sz = copy->size;
+    int sz = copy->range;
     int i;
 
     max = copy->values[0];
