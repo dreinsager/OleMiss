@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-void *avg_func(void *str);
-void *min_func(void *ptr);
-void *max_func(void *ptr);
+void *average(void *str);
+void *minimum(void *ptr);
+void *maximum(void *ptr);
 
 double avg;
 int min;
@@ -38,21 +38,21 @@ int main(int argc, char *argv[])
     datastruct ds = {argc - 1, copy};
 
 
-    Thread1 = pthread_create(&thread1, NULL, (void *) avg_func, (void *) &ds);
+    Thread1 = pthread_create(&thread1, NULL, (void *) average, (void *) &ds);
     if(Thread1)
     {
         fprintf(stderr,"Error - pthread_create() return code: %d\n", Thread1);
         exit(EXIT_FAILURE);
     }
 
-    Thread2 = pthread_create(&thread2, NULL, (void *) min_func, (void *) &ds);
+    Thread2 = pthread_create(&thread2, NULL, (void *) minimum, (void *) &ds);
     if(Thread2)
     {
         fprintf(stderr,"Error - pthread_create() return code: %d\n",Thread2);
         exit(EXIT_FAILURE);
     }
 
-    Thread3 = pthread_create(&thread3, NULL, (void *) max_func, (void *) &ds);
+    Thread3 = pthread_create(&thread3, NULL, (void *) maximum, (void *) &ds);
     if(Thread3)
     {
         fprintf(stderr,"Error - pthread_create() return code: %d\n", Thread3);
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 
-void *avg_func(void *ptr)
+void *average(void *ptr)
 {
     datastruct * copy;
     copy = (datastruct *) ptr;
@@ -89,7 +89,7 @@ void *avg_func(void *ptr)
     avg = (int)(avg / sz);
 }
 
-void *min_func(void *ptr)
+void *minimum(void *ptr)
 {
     datastruct * copy;
     copy = (datastruct *) ptr;
@@ -107,7 +107,7 @@ void *min_func(void *ptr)
     }
 }
 
-void *max_func(void *ptr)
+void *maximum(void *ptr)
 {
     datastruct * copy;
     copy = (datastruct *) ptr;
