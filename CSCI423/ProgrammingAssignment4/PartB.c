@@ -59,6 +59,6 @@ int N=atoi(argv[1]);
     
     double points = 4.0 * total;
     double pi = points / pgen;
-    printf("The approximate value of pi for the desired amount of points (%d) is: %f \n", pgen, pi);  
+    printf("Pi = %f \n", pi);  
     return 0;
 }
